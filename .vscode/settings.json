@@ -1,4 +1,5 @@
 {
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.documentSelectors": ["**/*.astro"]
 }
