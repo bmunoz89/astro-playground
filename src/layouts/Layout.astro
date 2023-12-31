@@ -17,6 +17,10 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <div
+      class="absolute top-0 z-[-2] h-screen w-screen bg-green-950/5 bg-[radial-gradient(ellipse_90%_90%_at_50%_-20%,rgba(119,196,155,0.25),rgba(255,255,255,0))]"
+    >
+    </div>
     <slot />
   </body>
 </html>
