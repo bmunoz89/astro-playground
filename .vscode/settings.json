@@ -2,5 +2,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.documentSelectors": ["**/*.astro"],
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }

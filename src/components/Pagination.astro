@@ -1,0 +1,80 @@
+---
+interface Props {
+  launchesLength: number;
+  page: number;
+  pagingCounter: number;
+  totalDocs: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+}
+
+const {
+  launchesLength,
+  page,
+  pagingCounter,
+  totalDocs,
+  hasNextPage,
+  hasPrevPage,
+} = Astro.props;
+---
+
+<div class="mt-8 flex flex-col items-center">
+  <!-- Help text -->
+  <span class="text-sm text-gray-700 dark:text-gray-400">
+    Showing <span class="font-semibold text-gray-900 dark:text-white"
+      >{pagingCounter}</span
+    >
+    to <span class="font-semibold text-gray-900 dark:text-white"
+      >{pagingCounter + launchesLength - 1}</span
+    > of
+    <span class="font-semibold text-gray-900 dark:text-white">{totalDocs}</span>
+    Entries
+  </span>
+  <!-- Buttons -->
+  <div class="xs:mt-0 mt-2 inline-flex">
+    <span
+      class:list={{
+        "cursor-not-allowed": !hasPrevPage,
+      }}
+    >
+      <a
+        href=`/?page=${page-1}`
+        aria-disabled={!hasPrevPage}
+        class="flex h-8 items-center justify-center rounded-s px-3 text-sm font-medium text-white dark:border-gray-700 dark:text-gray-400"
+        class:list={{
+          "bg-gray-800/50": !hasPrevPage,
+          "bg-gray-800": hasPrevPage,
+          "hover:bg-gray-900": hasPrevPage,
+          "dark:hover:bg-gray-700": hasPrevPage,
+          "dark:hover:text-white": hasPrevPage,
+          "cursor-pointer": hasPrevPage,
+          "pointer-events-none": !hasPrevPage,
+        }}
+      >
+        Prev
+      </a>
+    </span>
+    <span
+      class:list={{
+        "cursor-not-allowed": !hasNextPage,
+      }}
+    >
+      <a
+        href=`/?page=${page+1}`
+        aria-disabled={hasNextPage}
+        class="flex h-8 items-center justify-center rounded-e border-0 border-s border-gray-700 px-3 text-sm font-medium text-white dark:border-gray-700 dark:text-gray-400"
+        class:list={{
+          "bg-gray-800/50": !hasNextPage,
+          "bg-gray-800": hasNextPage,
+          "hover:bg-gray-900": hasNextPage,
+          "dark:hover:bg-gray-700": hasNextPage,
+          "dark:hover:text-white": hasNextPage,
+          "cursor-pointer": hasNextPage,
+          "pointer-events-none": !hasNextPage,
+        }}
+      >
+        Next
+      </a>
+    </span>
+  </div>
+</div>

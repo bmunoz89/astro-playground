@@ -1,0 +1,42 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getLaunchBy } from "@services/spacex";
+import { Image } from "astro:assets";
+
+// Astro output config must be "hybrid" or "server"
+export const prerender = false; // server
+
+// This can be ignores if astro config output is not "static"
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const launches = await getLatestLaunches();
+//   return launches.map((launch) => ({
+//     params: {
+//       id: launch.id,
+//     },
+//   }));
+// };
+
+const { id } = Astro.params;
+
+if (typeof id !== "string") {
+  return Astro.redirect("/404");
+}
+
+const launch = await getLaunchBy({ id });
+---
+
+<Layout title=`Lanzamiento ${launch.id}`>
+  <article class="flex flex-col gap-y-4">
+    <Image
+      class="h-auto w-52"
+      src={launch.links.patch.small}
+      alt={launch.name}
+      width="256"
+      height="256"
+    />
+    <h2 class="text-4xl font-bold">
+      Launch #{launch.flight_number}
+    </h2>
+    <p class="text-lg">{launch.details}</p>
+  </article>
+</Layout>

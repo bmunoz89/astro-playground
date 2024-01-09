@@ -1,4 +1,7 @@
 ---
+import Header from "@components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
+
 interface Props {
   title: string;
 }
@@ -15,41 +18,18 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body>
-    <div
-      class="absolute top-0 z-[-2] h-screen w-screen bg-green-950/5 bg-[radial-gradient(ellipse_90%_90%_at_50%_-20%,rgba(119,196,155,0.25),rgba(255,255,255,0))]"
-    >
-    </div>
-    <slot />
+  <body class="min-h-screen bg-gray-900 pb-32">
+    <Header />
+    <main class="mx-8">
+      <slot />
+    </main>
+    <style is:global>
+      html {
+        font-family: system-ui, sans-serif;
+        color-scheme: dark light;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>

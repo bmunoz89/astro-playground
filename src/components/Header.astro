@@ -1,0 +1,35 @@
+---
+import HeaderButton from "@components/HeaderButton.astro";
+import ClockDownIcon from "@components/icons/ClockDownIcon.astro";
+import InfoIcon from "@components/icons/InfoIcon.astro";
+import RocketIcon from "@components/icons/RocketIcon.astro";
+---
+
+<header class="mx-auto max-w-3xl px-4 py-8 lg:px-6 lg:py-16">
+  <div class="mx-auto mb-8 text-center lg:mb-16">
+    <h2 class="mb-4 text-5xl font-extrabold tracking-tight">
+      SpaceX launches 🚀
+    </h2>
+    <p class="text-xl font-light text-gray-500 dark:text-gray-400">
+      All the information about SpaceX launches
+    </p>
+  </div>
+
+  <nav class="flex w-full flex-col items-center justify-between md:flex-row">
+    <HeaderButton href="/">
+      Últimos lanzamientos
+      <InfoIcon slot="before" class="size-6 sm:size-7 md:size-9 lg:size-10" />
+    </HeaderButton>
+    <HeaderButton href="/about">
+      Sobre el proyecto
+      <RocketIcon slot="before" class="size-6 sm:size-7 md:size-9 lg:size-10" />
+    </HeaderButton>
+    <HeaderButton href="/oldest">
+      Los más viejos
+      <ClockDownIcon
+        slot="before"
+        class="size-6 sm:size-7 md:size-9 lg:size-10"
+      />
+    </HeaderButton>
+  </nav>
+</header>

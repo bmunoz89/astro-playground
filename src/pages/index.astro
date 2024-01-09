@@ -1,13 +1,51 @@
 ---
-import Counter from "@components/counter.vue";
+import CardLaunch from "@components/CardLaunch.astro";
+import Pagination from "@components/Pagination.astro";
 import Layout from "@layouts/Layout.astro";
+import { getLaunches } from "@services/spacex";
+
+const currentPage = Number(Astro.url.searchParams.get("page") ?? 1);
+if (Number.isNaN(currentPage) || currentPage <= 0) {
+  return Astro.redirect("/404");
+}
+
+const {
+  docs: launches,
+  page,
+  pagingCounter,
+  totalDocs,
+  hasPrevPage,
+  hasNextPage,
+} = await getLaunches(currentPage);
+
+if (!launches.length) {
+  return Astro.redirect("/404");
+}
 ---
 
-<Layout title="Welcome to Astro.">
-  <div class="flex grow flex-col items-center">
-    <h1 class="text-white/80">Hello world!</h1>
-    <Counter client:load />
+<Layout title="SpaceX Launches">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    {
+      launches.map(
+        ({ id, links, details, flight_number: flightNumber, success }) => (
+          <CardLaunch
+            {id}
+            img={links.patch.small}
+            {details}
+            {flightNumber}
+            {success}
+          />
+        ),
+      )
+    }
   </div>
-</Layout>
 
-<style></style>
+  <Pagination
+    launchesLength={launches.length}
+    {page}
+    {pagingCounter}
+    {totalDocs}
+    {hasPrevPage}
+    {hasNextPage}
+  />
+</Layout>
