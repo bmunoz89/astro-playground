@@ -15,7 +15,7 @@ const launchStatus = success ? "Success" : "Failure";
 
 <a
   href={`/launch/${id}`}
-  class="flex flex-col rounded-lg border border-gray-700 bg-gray-800 shadow-md transition hover:scale-105 hover:border-gray-500 hover:bg-gray-700"
+  class="flex flex-col items-center rounded-lg border border-gray-700 bg-gray-800 shadow-md transition hover:scale-105 hover:border-gray-500 hover:bg-gray-700"
 >
   <Picture
     src={img}
@@ -25,10 +25,6 @@ const launchStatus = success ? "Success" : "Failure";
     width="256"
     height="256"
   />
-
-  <!-- <picture class="flex justify-center p-4">
-    <img class="mb-5 rounded-lg" src={img} alt={`Path for launch ${id}`} />
-  </picture> -->
 
   <header class="flex-grow p-4">
     <span
