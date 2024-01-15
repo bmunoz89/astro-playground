@@ -39,12 +39,10 @@ const launchStatus = success ? "Success" : "Failure";
       Flight #{flightNumber}
     </h2>
 
-    <p class="mb-4 font-light text-gray-400">
-      {
-        details && details.length > 100 ?
-          details.slice(0, 100) + "..."
-        : details
-      }
+    <p
+      class="mb-4 line-clamp-6 text-ellipsis text-pretty font-light text-gray-400"
+    >
+      {details}
     </p>
   </header>
 </a>
