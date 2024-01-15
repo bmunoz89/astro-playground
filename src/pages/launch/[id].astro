@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { getLaunchBy } from "@services/spacex";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 // Astro output config must be "hybrid" or "server"
 export const prerender = false; // server
@@ -26,11 +26,19 @@ const launch = await getLaunchBy({ id });
 ---
 
 <Layout title=`Lanzamiento ${launch.id}`>
-  <article class="flex flex-col gap-y-4">
-    <Image
+  <article class="relative flex flex-col gap-y-4">
+    <Picture
       class="h-auto w-52"
       src={launch.links.patch.small}
       alt={launch.name}
+      width="256"
+      height="256"
+    />
+    <Picture
+      class="absolute -left-6 -top-6 -z-10 opacity-50 blur-xl"
+      src={launch.links.patch.small}
+      alt={launch.name}
+      alt={`Path for launch ${id}`}
       width="256"
       height="256"
     />
