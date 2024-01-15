@@ -1,8 +1,6 @@
 ---
 import HeaderButton from "@components/HeaderButton.astro";
-import ClockDownIcon from "@components/icons/ClockDownIcon.astro";
-import InfoIcon from "@components/icons/InfoIcon.astro";
-import RocketIcon from "@components/icons/RocketIcon.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <header class="mx-auto max-w-3xl px-4 py-8 lg:px-6 lg:py-16">
@@ -17,19 +15,25 @@ import RocketIcon from "@components/icons/RocketIcon.astro";
 
   <nav class="flex w-full flex-col items-center justify-between md:flex-row">
     <HeaderButton href="/">
-      Últimos lanzamientos
-      <InfoIcon slot="before" class="size-6 sm:size-7 md:size-9 lg:size-10" />
-    </HeaderButton>
-    <HeaderButton href="/about">
-      Sobre el proyecto
-      <RocketIcon slot="before" class="size-6 sm:size-7 md:size-9 lg:size-10" />
-    </HeaderButton>
-    <HeaderButton href="/oldest">
-      Los más viejos
-      <ClockDownIcon
-        slot="before"
+      <Icon
+        name="tabler:info-circle"
         class="size-6 sm:size-7 md:size-9 lg:size-10"
       />
+      Últimos lanzamientos
+    </HeaderButton>
+    <HeaderButton href="/about">
+      <Icon
+        name="tabler:rocket"
+        class="size-6 sm:size-7 md:size-9 lg:size-10"
+      />
+      Sobre el proyecto
+    </HeaderButton>
+    <HeaderButton href="/oldest">
+      <Icon
+        name="tabler:clock-down"
+        class="size-6 sm:size-7 md:size-9 lg:size-10"
+      />
+      Los más viejos
     </HeaderButton>
   </nav>
 </header>

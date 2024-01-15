@@ -23,6 +23,8 @@
     "vue": "^3.4.3"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.1.103",
+    "astro-icon": "^1.0.2",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.3",
     "prettier-plugin-tailwindcss": "^0.5.10",

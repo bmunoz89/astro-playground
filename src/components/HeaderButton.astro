@@ -9,7 +9,5 @@ const { ...attrs } = Astro.props;
   {...attrs}
   class="mb-2 mr-2 inline-flex scale-90 flex-row items-center justify-center gap-x-2 text-nowrap rounded-lg px-5 py-2.5 font-medium opacity-70 transition-all duration-200 ease-in-out hover:scale-110 hover:bg-slate-700 hover:opacity-100 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#1da1f2]/50 dark:focus:ring-[#1da1f2]/55"
 >
-  <slot name="before" />
   <slot>El contenido por defecto</slot>
-  <slot name="after" />
 </a>
