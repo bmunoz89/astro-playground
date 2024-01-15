@@ -26,22 +26,23 @@ const launch = await getLaunchBy({ id });
 ---
 
 <Layout title=`Lanzamiento ${launch.id}`>
-  <article class="relative flex flex-col gap-y-4">
-    <Picture
-      class="h-auto w-52"
-      src={launch.links.patch.small}
-      alt={launch.name}
-      width="256"
-      height="256"
-    />
-    <Picture
-      class="absolute -left-6 -top-6 -z-10 opacity-50 blur-xl"
-      src={launch.links.patch.small}
-      alt={launch.name}
-      alt={`Path for launch ${id}`}
-      width="256"
-      height="256"
-    />
+  <article class="flex flex-col gap-y-4">
+    <div class="relative z-0 h-auto w-64 p-4">
+      <Picture
+        src={launch.links.patch.small}
+        alt={launch.name}
+        width="256"
+        height="256"
+      />
+      <Picture
+        class="absolute left-0 top-0 -z-10 opacity-50 blur-xl"
+        src={launch.links.patch.small}
+        alt={launch.name}
+        alt={`Path for launch ${id}`}
+        width="256"
+        height="256"
+      />
+    </div>
     <h2 class="text-4xl font-bold">
       Launch #{launch.flight_number}
     </h2>
